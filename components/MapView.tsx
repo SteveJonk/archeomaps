@@ -41,7 +41,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
 
         return {
           id,
-          title: loc.properties.Name,
+          title: loc.properties.name,
           description: loc.properties.description,
           longitude: loc.geometry.coordinates[0],
           latitude: loc.geometry.coordinates[1],
@@ -81,7 +81,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
 
   function onLocationDetail(setLoc: Location) {
     setCurrentLocation(setLoc)
-    setLatLong([setLoc.longitude, setLoc.longitude])
+    setLatLong([setLoc.latitude, setLoc.longitude])
     router.replace(`/?location=${setLoc.latitude},${setLoc.longitude}`)
   }
 
@@ -104,16 +104,16 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
         mapStyle={MAP_STYLE}
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
       >
-        {points.map((location) => {
+        {points.map((location, index) => {
           return (
             <Marker
-              key={location.id}
+              key={`${index}-${location.id}`}
               longitude={location.longitude}
               latitude={location.latitude}
               style={{ position: 'absolute', left: 0, top: 0, cursor: 'pointer' }}
               onClick={() => onLocationDetail(location)}
             >
-              <div className="h-2 w-2 rounded-lg bg-black" />
+              <div className="h-2 w-2 rounded-lg bg-gray-200 hover:bg-gray-700" />
             </Marker>
           )
         })}
