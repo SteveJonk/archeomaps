@@ -3,18 +3,20 @@ import { Map, MapRef, Marker } from 'react-map-gl'
 import archeomaps from 'data/archeomaps.json'
 import { v4 as uuidv4 } from 'uuid'
 import { DetailView } from './DetailView'
+import { AnimatePresence } from 'framer-motion'
+import { SetLocationProps } from 'pages'
 
 export const INITIAL_LAT_LONG = [52.455, 5.69306]
 
-export function MapView() {
+export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
   const data = archeomaps as unknown as Archeomaps
 
   const mapRef = useRef<MapRef | null>(null)
-  const [currentLocation, setCurrentLocation] = useState<Location | null>(null)
+
   const [[latitude, longitude], setLatLong] = useState<number[]>(INITIAL_LAT_LONG)
 
   useEffect(() => {
-    const toZoom = currentLocation.id ? 6 : 3
+    const toZoom = currentLocation?.id ? 6 : 3
 
     mapRef.current?.flyTo({
       center: [longitude, latitude],
@@ -53,9 +55,11 @@ export function MapView() {
 
   return (
     <>
-      {currentLocation && (
-        <DetailView title={currentLocation.title} description={currentLocation.title} />
-      )}
+      <AnimatePresence>
+        {currentLocation && (
+          <DetailView title={currentLocation.title} description={currentLocation.title} />
+        )}
+      </AnimatePresence>
 
       <Map
         ref={mapRef}
@@ -88,6 +92,8 @@ export function MapView() {
   )
 }
 
+type MapViewProps = SetLocationProps
+
 type Feature = {
   type: 'Feature'
   geometry: {
@@ -103,7 +109,7 @@ type Archeomaps = {
   features: Feature[]
 }
 
-type Location = {
+export type Location = {
   id: string
   title: string
   longitude: number
