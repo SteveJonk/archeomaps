@@ -10,22 +10,6 @@ export const INITIAL_LAT_LONG = [52.455, 5.69306]
 
 const MAP_STYLE = 'mapbox://styles/stevejonk/clo6yz6p200u601qs0wct801b'
 
-type Feature = {
-  type: 'Feature'
-  geometry: {
-    type: 'Point'
-    coordinates: [-64.6875, -71.746432]
-  }
-  properties: Record<string, null | string | number>
-}
-
-type Archeomaps = {
-  name: 'Markers MP'
-  type: 'FeatureCollection'
-  features: Feature[]
-}
-
-export function MapView() {
 export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
   const data = archeomaps as unknown as Archeomaps
   const mapRef = useRef<MapRef | null>(null)
@@ -100,7 +84,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
               style={{ position: 'absolute', left: 0, top: 0, cursor: 'pointer' }}
               onClick={() => onLocationDetail(location)}
             >
-              <div className="h-2 w-2 rounded-lg bg-blue-200" />
+              <div className="h-2 w-2 rounded-lg bg-black" />
             </Marker>
           )
         })}
