@@ -21,7 +21,8 @@
       "@/layouts/*": ["layouts/*"],
       "@/lib/*": ["lib/*"],
       "@/css/*": ["css/*"],
-      "@/utils/*": ["utils/*"]
+      "@/utils/*": ["utils/*"],
+      "@/queries/*": ["queries/*"]
     }
   },
   "include": ["declarations.d.ts", "**/*.ts", "**/*.tsx"],

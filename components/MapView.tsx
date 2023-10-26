@@ -51,6 +51,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
   }
 
   useEffect(() => {
+    // Load the initial location from the url
     if (router.query.location) {
       const locationName = router.query.location as string
 

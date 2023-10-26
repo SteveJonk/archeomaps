@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion'
 import ReactHtmlParser from 'react-html-parser'
 
-import { parseUrl } from '../utils/parseUrl'
+import { parseUrl } from '@/utils/parseUrl'
+import { useGetGptSummary } from '@/queries/gpt'
 
-export function DetailView({ title, description }: DetailViewProps) {
+export function DetailView({ description, title }: DetailViewProps) {
+  const prompt = `Tell me something about ${title}, add html tags for styling`
+  const { data: gptSummary, isLoading } = useGetGptSummary(title ? prompt : undefined)
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -12,7 +16,19 @@ export function DetailView({ title, description }: DetailViewProps) {
       className="absolute left-[3%] top-[5%] z-[9999] h-[90%] w-[94%] bg-gray-900 bg-opacity-80 p-6 px-4 sm:px-6"
     >
       <h1 className="mb-8 text-3xl text-white">{title}</h1>
-      <div className="text-white">{ReactHtmlParser(parseUrl(description))}</div>
+      {isLoading && <p>Generating content...</p>}
+
+      {!isLoading &&
+        (gptSummary?.choices?.[0] ? (
+          <>
+            <div className="text-white">
+              {ReactHtmlParser(parseUrl(gptSummary.choices[0].message?.content))}
+            </div>
+            <div className="text-white">{ReactHtmlParser(parseUrl(description))}</div>
+          </>
+        ) : (
+          <div className="text-white">{ReactHtmlParser(parseUrl(description))}</div>
+        ))}
     </motion.div>
   )
 }
