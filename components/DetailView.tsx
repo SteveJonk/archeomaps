@@ -14,7 +14,7 @@ export function DetailView({ description, title, category }: DetailViewProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="absolute left-[2%] top-[5%] z-[9999] h-[90%] w-[96%] overflow-y-scroll bg-gray-900 bg-opacity-80 p-6 xl:p-12"
+      className="absolute left-[2%] top-[5%] z-[9999] h-[90%] w-[96%] overflow-y-scroll rounded-2xl bg-gray-900 bg-opacity-80 p-6 xl:p-12"
     >
       <article className="max-w-full sm:max-w-[40em]">
         <h1 className="mb-3 break-words text-3xl text-white">{title}</h1>
