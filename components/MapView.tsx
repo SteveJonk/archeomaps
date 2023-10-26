@@ -65,6 +65,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
         description: locationByLatLong?.properties?.description,
         longitude: locationByLatLong?.geometry.coordinates[0],
         latitude: locationByLatLong?.geometry.coordinates[1],
+        icon: locationByLatLong?.properties?.icon,
       })
     }
   }, [router.query?.location])
@@ -73,7 +74,11 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
     <>
       <AnimatePresence>
         {currentLocation && (
-          <DetailView title={currentLocation.name} description={currentLocation.description} />
+          <DetailView
+            title={currentLocation.name}
+            description={currentLocation.description}
+            category={currentLocation.icon}
+          />
         )}
       </AnimatePresence>
 
@@ -116,4 +121,5 @@ export type Location = {
   description: string | null
   longitude: number | null
   latitude: number | null
+  icon: string | null
 }
