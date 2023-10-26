@@ -47,6 +47,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
       if (!clusterId && feature) {
         // Redirect with loaction name in url, next useEffect will show DetailView
         setCurrentLocation({
+          icon: '',
           name: feature?.properties?.name,
           description: feature?.properties?.description,
           longitude: feature?.geometry.coordinates[0],

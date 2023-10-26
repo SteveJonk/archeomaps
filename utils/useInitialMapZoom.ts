@@ -29,6 +29,7 @@ export function useInitialMapZoom({
           }) as GeoJSON.Feature<GeoJSON.Point> | undefined
 
           setCurrentLocation({
+            icon: '',
             name: urlLocation?.properties?.name,
             description: urlLocation?.properties?.description,
             longitude: urlLocation?.geometry.coordinates[0],
