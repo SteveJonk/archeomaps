@@ -15,7 +15,7 @@ const LayoutWrapper = ({ children }: Props) => {
   return (
     <SectionContainer>
       <div className="flex min-h-screen flex-col justify-between">
-        <header className="sticky top-0 z-10 flex items-center justify-between bg-white py-10 dark:bg-gray-900">
+        <header className="sticky top-0 z-10 mx-auto flex w-full justify-between bg-white px-4 py-6 dark:bg-gray-900 sm:px-6 xl:px-0">
           <div>
             <Link href="/" aria-label={siteMetadata.headerTitle}>
               <div className="flex items-center justify-between">
@@ -41,7 +41,9 @@ const LayoutWrapper = ({ children }: Props) => {
             <MobileNav />
           </div>
         </header>
-        <main className="mb-auto">{children}</main>
+        <main className="relative mb-auto h-[calc(100vh-97px)] overflow-x-clip overflow-y-clip">
+          {children}
+        </main>
       </div>
     </SectionContainer>
   )
