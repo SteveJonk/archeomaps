@@ -5,24 +5,36 @@ import '@fontsource/inter/variable-full.css'
 
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { ClientReload } from '@/components/ClientReload'
+import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
 import LayoutWrapper from '@/components/LayoutWrapper'
 
-const isDevelopment = process.env.NODE_ENV === 'development'
-const isSocket = process.env.SOCKET
-
 export default function App({ Component, pageProps, router }: AppProps) {
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: 30 * 1000, // 30 seconds
+            retry: false,
+          },
+        },
+      })
+  )
+
   return (
     <>
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
-      {isDevelopment && isSocket && <ClientReload />}
       <LayoutWrapper>
-        <AnimatePresence mode="wait" initial={false} onExitComplete={() => window.scroll(0, 0)}>
-          <Component {...pageProps} key={router.asPath} />
-        </AnimatePresence>
+        <QueryClientProvider client={queryClient}>
+          <AnimatePresence mode="wait" initial={false} onExitComplete={() => window.scroll(0, 0)}>
+            <Component {...pageProps} key={router.asPath} />
+          </AnimatePresence>
+        </QueryClientProvider>
       </LayoutWrapper>
     </>
   )
