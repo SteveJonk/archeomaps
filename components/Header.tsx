@@ -26,7 +26,7 @@ export function Header({ currentLocation, setCurrentLocation }: HeaderProps) {
       <div className="flex items-center text-base leading-5">
         {currentLocation && (
           <button
-            className="mr-4 px-4 py-2 text-white opacity-70 transition-opacity hover:opacity-100"
+            className="px-4 py-2 text-white opacity-70 transition-opacity hover:opacity-100"
             onClick={onResetLocation}
           >
             Terug naar overzicht
