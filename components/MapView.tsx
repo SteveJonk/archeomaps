@@ -104,7 +104,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
         mapStyle={MAP_STYLE}
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
       >
-        {points.map((location) => {
+        {points.map((location, index) => {
           return (
             <Marker
               key={`${index}-${location.id}`}
