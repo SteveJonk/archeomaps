@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Layer, Map, MapRef, Marker, Source } from 'react-map-gl'
+import { Map, MapRef, Marker } from 'react-map-gl'
 import archeomaps from 'data/archeomaps.json'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -41,35 +41,28 @@ export function MapView() {
     })
   }, [longitude, latitude, locationId])
 
-  // const points = useMemo(() => {
-  //   return data.features
-  //     .map((location) => {
-  //       if (!location?.geometry?.coordinates?.[0] || !location?.geometry?.coordinates?.[1]) {
-  //         return false
-  //       }
+  const points = useMemo(() => {
+    return data.features
+      .map((location) => {
+        if (
+          !location?.geometry ||
+          !location?.geometry?.coordinates ||
+          !location?.geometry?.coordinates.length ||
+          isNaN(location.geometry.coordinates[0]) ||
+          isNaN(location.geometry.coordinates[1])
+        ) {
+          return false
+        }
 
-  //       return {
-  //         id: uuidv4(),
-  //         title: location.properties.name,
-  //         longitude: location.geometry.coordinates[0],
-  //         latitude: location.geometry.coordinates[1],
-  //       }
-  //     })
-  //     .filter(Boolean)
-  // }, [data])
-
-  const points = [
-    {
-      id: 'ea90dd3d-c3d3-4965-a728-d2306d2c309a',
-      latitude: 29.7996288,
-      longitude: 31.2089397,
-      title: undefined,
-    },
-  ]
-
-  console.log({
-    points,
-  })
+        return {
+          id: uuidv4(),
+          title: location.properties.name,
+          longitude: location.geometry.coordinates[0],
+          latitude: location.geometry.coordinates[1],
+        }
+      })
+      .filter(Boolean)
+  }, [data])
 
   return (
     <Map
