@@ -52,7 +52,6 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
 
   useEffect(() => {
     const locationLatLong = (router.query.location as string)?.split(',')
-    console.log({ locationLatLong })
 
     if (locationLatLong && locationLatLong.length > 0 && points.length) {
       const initialLocation = points.find(
@@ -60,8 +59,6 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
           loc.latitude === Number(locationLatLong[0]) &&
           loc.longitude === Number(locationLatLong[1])
       )
-
-      console.log({ initialLocation, points })
 
       if (initialLocation) {
         setCurrentLocation(initialLocation)
@@ -79,10 +76,10 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
     })
   }, [currentLocation, latitude, longitude])
 
-  function onLocationDetail(setLoc: Location) {
+  const onLocationDetail = (setLoc: Location) => {
     setCurrentLocation(setLoc)
     setLatLong([setLoc.latitude, setLoc.longitude])
-    router.replace(`/?location=${setLoc.latitude},${setLoc.longitude}`)
+    // router.push(`/?location=${setLoc.latitude},${setLoc.longitude}`)
   }
 
   return (
