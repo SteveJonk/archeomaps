@@ -1,39 +1,40 @@
-import { useEffect, useRef } from 'react'
-import { Map, MapRef, Layer, Source, MapLayerMouseEvent, GeoJSONSource } from 'react-map-gl'
+import { Map, Layer, Source, MapLayerMouseEvent, GeoJSONSource } from 'react-map-gl'
 import { AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { clusterLayer, clusterCountLayer, unclusteredPointLayer } from './layers'
 
-import { SetLocationProps } from 'pages'
+import { type SetLocationProps } from 'pages'
+import { formatName } from '@/utils/formatName'
 import archeomaps from 'data/archeomaps.json'
 
 import { DetailView } from './DetailView'
+import { useInitialMapZoom } from '@/utils/useInitialMapZoom'
 
 export const INITIAL_LAT_LONG = [52.455, 5.69306]
 const MAP_STYLE = 'mapbox://styles/stevejonk/clo6yz6p200u601qs0wct801b'
 
-function formatName(name: string): string {
-  return name.replace(/ /g, '_').toLowerCase()
-}
-
 export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
-  const data = archeomaps as unknown as Archeomaps
-  const mapRef = useRef<MapRef | null>(null)
+  const data = archeomaps as unknown as GeoJSON.FeatureCollection<GeoJSON.Geometry>
   const router = useRouter()
+
+  const [mapRef, setRef] = useInitialMapZoom({
+    data,
+    location: router.query.location as string,
+    currentLocation,
+    setCurrentLocation,
+  })
 
   function onMapClick(event: MapLayerMouseEvent) {
     const features = event.features || []
 
-    if (features.length > 0) {
+    if (features.length > 0 && mapRef?.current) {
       const feature = event.features[0] as GeoJSON.Feature<GeoJSON.Point>
-
       const clusterId = feature.properties.cluster_id
       const mapboxSource = mapRef.current.getSource('archeomaps') as GeoJSONSource
 
       if (clusterId) {
         mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
           if (err) return
-
           mapRef.current.easeTo({
             center: feature.geometry.coordinates as [number, number],
             zoom,
@@ -44,30 +45,24 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
 
       if (!clusterId && feature) {
         // Redirect with loaction name in url, next useEffect will show DetailView
+        setCurrentLocation({
+          name: feature?.properties?.name,
+          description: feature?.properties?.description,
+          longitude: feature?.geometry.coordinates[0],
+          latitude: feature?.geometry.coordinates[1],
+        })
+
+        mapRef.current.easeTo({
+          center: feature.geometry.coordinates as [number, number],
+          zoom: 7,
+          duration: 500,
+        })
+
         const formattedName = formatName(feature.properties.name)
-        router.push(`/?location=${formattedName}`)
+        window.history.replaceState('', '', `/?location=${formattedName}`)
       }
     }
   }
-
-  useEffect(() => {
-    // Load the initial location from the url
-    if (router.query.location) {
-      const locationName = router.query.location as string
-
-      const locationByLatLong = data.features.find((feature: GeoJSON.Feature<GeoJSON.Point>) => {
-        const findFormattedString = formatName(feature.properties.name)
-        return locationName === findFormattedString
-      }) as GeoJSON.Feature<GeoJSON.Point> | undefined
-
-      setCurrentLocation({
-        name: locationByLatLong?.properties?.name,
-        description: locationByLatLong?.properties?.description,
-        longitude: locationByLatLong?.geometry.coordinates[0],
-        latitude: locationByLatLong?.geometry.coordinates[1],
-      })
-    }
-  }, [router.query?.location])
 
   return (
     <>
@@ -78,7 +73,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
       </AnimatePresence>
 
       <Map
-        ref={mapRef}
+        ref={setRef}
         initialViewState={{
           latitude: INITIAL_LAT_LONG[0],
           longitude: INITIAL_LAT_LONG[1],
@@ -108,8 +103,6 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
 }
 
 type MapViewProps = SetLocationProps
-
-type Archeomaps = GeoJSON.FeatureCollection<GeoJSON.Geometry>
 
 export type Location = {
   name: string | null
