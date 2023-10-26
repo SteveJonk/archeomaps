@@ -10,8 +10,11 @@ import archeomaps from 'data/archeomaps.json'
 import { DetailView } from './DetailView'
 
 export const INITIAL_LAT_LONG = [52.455, 5.69306]
-
 const MAP_STYLE = 'mapbox://styles/stevejonk/clo6yz6p200u601qs0wct801b'
+
+function formatName(name: string): string {
+  return name.replace(/ /g, '_').toLowerCase()
+}
 
 export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
   const data = archeomaps as unknown as Archeomaps
@@ -40,18 +43,30 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
       }
 
       if (!clusterId && feature) {
-        const long = feature.geometry.coordinates[0]
-        const lat = feature.geometry.coordinates[1]
-
-        setCurrentLocation({
-          name: feature.properties.name,
-          description: feature.properties.description,
-          longitude: long,
-          latitude: lat,
-        })
+        // Redirect with loaction name in url, next useEffect will show DetailView
+        const formattedName = formatName(feature.properties.name)
+        router.push(`/?location=${formattedName}`)
       }
     }
   }
+
+  useEffect(() => {
+    if (router.query.location) {
+      const locationName = router.query.location as string
+
+      const locationByLatLong = data.features.find((feature: GeoJSON.Feature<GeoJSON.Point>) => {
+        const findFormattedString = formatName(feature.properties.name)
+        return locationName === findFormattedString
+      }) as GeoJSON.Feature<GeoJSON.Point> | undefined
+
+      setCurrentLocation({
+        name: locationByLatLong?.properties?.name,
+        description: locationByLatLong?.properties?.description,
+        longitude: locationByLatLong?.geometry.coordinates[0],
+        latitude: locationByLatLong?.geometry.coordinates[1],
+      })
+    }
+  }, [router.query?.location])
 
   return (
     <>

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import ReactHtmlParser from 'react-html-parser'
+
 import { parseUrl } from '../utils/parseUrl'
 
 export function DetailView({ title, description }: DetailViewProps) {
