@@ -1,5 +1,5 @@
 export const mapCategory = (categoryCode: string): Category | undefined => {
-  return categories[categoryCode] ?? undefined
+  return categories[categoryCode] ?? ''
 }
 
 export const categories = {

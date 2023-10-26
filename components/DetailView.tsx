@@ -2,9 +2,14 @@ import { motion } from 'framer-motion'
 import ReactHtmlParser from 'react-html-parser'
 import { useGetGptSummary } from '@/queries/gpt'
 
-import { parseUrl } from '../utils/parseUrl'
+import { parseUrl } from '@/utils/parseUrl'
+import { useGetGptSummary } from '@/queries/gpt'
+import { mapCategory } from '@/utils/mapCategory'
 
-export function DetailView({ title, description, category }: DetailViewProps) {
+export function DetailView({ description, title, category }: DetailViewProps) {
+  const prompt = `Tell me something about ${title}, add html tags for styling`
+  const { data: gptSummary, isLoading } = useGetGptSummary(title ? prompt : undefined)
+
     const prompt = `Tell me something about ${title}, add html tags for styling`
     const { data: gptSummary, isLoading } = useGetGptSummary(title ? prompt : undefined)
 
