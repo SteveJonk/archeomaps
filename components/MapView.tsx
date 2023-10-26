@@ -5,10 +5,11 @@ import { clusterLayer, clusterCountLayer, unclusteredPointLayer } from './layers
 
 import { type SetLocationProps } from 'pages'
 import { formatName } from '@/utils/formatName'
+import { useInitialMapZoom } from '@/utils/useInitialMapZoom'
+import { Sidebar } from '@/components/Sidebar'
 import archeomaps from 'data/archeomaps.json'
 
 import { DetailView } from './DetailView'
-import { useInitialMapZoom } from '@/utils/useInitialMapZoom'
 
 export const INITIAL_LAT_LONG = [52.455, 5.69306]
 const MAP_STYLE = 'mapbox://styles/stevejonk/clo6yz6p200u601qs0wct801b'
@@ -68,10 +69,14 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
     <>
       <AnimatePresence>
         {currentLocation && (
-          <DetailView title={currentLocation.name} description={currentLocation.description} />
+          <DetailView
+            title={currentLocation.name}
+            description={currentLocation.description}
+            category={currentLocation.icon}
+          />
         )}
       </AnimatePresence>
-
+      <Sidebar />
       <Map
         ref={setRef}
         initialViewState={{
@@ -79,7 +84,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
           longitude: INITIAL_LAT_LONG[1],
           zoom: 3,
         }}
-        style={{ position: 'absolute', zIndex: 80, top: 0, left: 0, right: 0, bottom: 0 }}
+        style={{ position: 'absolute', zIndex: 20, top: 0, left: 0, right: 0, bottom: 0 }}
         mapStyle={MAP_STYLE}
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
         interactiveLayerIds={[clusterLayer.id, unclusteredPointLayer.id]}
@@ -109,4 +114,5 @@ export type Location = {
   description: string | null
   longitude: number | null
   latitude: number | null
+  icon: string | null
 }
