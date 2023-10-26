@@ -8,6 +8,7 @@ import { SetLocationProps } from 'pages'
 import archeomaps from 'data/archeomaps.json'
 
 import { DetailView } from './DetailView'
+import { Sidebar } from '@/components/Sidebar'
 
 export const INITIAL_LAT_LONG = [52.455, 5.69306]
 const MAP_STYLE = 'mapbox://styles/stevejonk/clo6yz6p200u601qs0wct801b'
@@ -81,7 +82,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
           />
         )}
       </AnimatePresence>
-
+      <Sidebar />
       <Map
         ref={mapRef}
         initialViewState={{
@@ -89,7 +90,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
           longitude: INITIAL_LAT_LONG[1],
           zoom: 3,
         }}
-        style={{ position: 'absolute', zIndex: 80, top: 0, left: 0, right: 0, bottom: 0 }}
+        style={{ position: 'absolute', zIndex: 20, top: 0, left: 0, right: 0, bottom: 0 }}
         mapStyle={MAP_STYLE}
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
         interactiveLayerIds={[clusterLayer.id, unclusteredPointLayer.id]}
