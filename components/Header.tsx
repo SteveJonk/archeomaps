@@ -13,7 +13,7 @@ export function Header({ currentLocation, setCurrentLocation }: HeaderProps) {
   }
 
   return (
-    <header className="sticky top-0 z-10 flex w-full justify-between bg-white px-4 py-6 dark:bg-gray-900">
+    <header className="white sticky top-0 z-10 mx-auto flex w-full justify-between bg-gray-900 px-4 py-6 sm:px-6">
       <div>
         <Link href="/" aria-label={siteMetadata.headerTitle}>
           <div className="flex items-center justify-between">
@@ -26,7 +26,7 @@ export function Header({ currentLocation, setCurrentLocation }: HeaderProps) {
       <div className="flex items-center text-base leading-5">
         {currentLocation && (
           <button
-            className="mr-4 rounded-sm bg-white px-4 py-2 text-black"
+            className="mr-4 px-4 py-2 text-white opacity-70 transition-opacity hover:opacity-100"
             onClick={onResetLocation}
           >
             Terug naar overzicht

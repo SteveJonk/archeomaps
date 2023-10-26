@@ -6,9 +6,15 @@ export default function Home() {
   const [currentLocation, setCurrentLocation] = useState<Location | null>(null)
 
   return (
-    <div className="flex min-h-screen flex-col justify-between">
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div
+      className="flex min-h-screen flex-col justify-between"
+      onKeyDown={(event) => {
+        if (event.key === 'Escape') setCurrentLocation(null)
+      }}
+    >
       <Header {...{ currentLocation, setCurrentLocation }} />
-      <section className="relative mb-auto h-[calc(100vh-97px)] overflow-x-clip overflow-y-clip">
+      <section className="relative mb-auto h-[calc(100vh-97px)] overflow-x-clip overflow-y-clip hover:cursor-auto">
         <MapView {...{ currentLocation, setCurrentLocation }} />
       </section>
     </div>

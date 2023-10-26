@@ -42,10 +42,9 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
   //           latitude: null,
   //         }
   //       }
-
   //       return {
   //         id,
-  //         title: loc.properties.Name,
+  //         title: loc.properties.name,
   //         description: loc.properties.description,
   //         longitude: loc.geometry.coordinates[0],
   //         latitude: loc.geometry.coordinates[1],
@@ -89,28 +88,37 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
   function onMapClick(event: MapLayerMouseEvent) {
     console.log({
       event,
-      features: event.features,
     })
 
-    const feature = event.features[0]
-    const clusterId = feature.properties.cluster_id
+    const features = event.features || []
 
-    console.log({ feature })
+    if (features.length > 0) {
+      console.log({ features })
 
-    const mapboxSource = mapRef.current.getSource('archeomaps') as GeoJSONSource
+      const feature = event.features[0]
+      const clusterId = feature.properties.cluster_id
 
-    mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
-      if (err) {
-        return
-      }
+      const mapboxSource = mapRef.current.getSource('archeomaps') as GeoJSONSource
 
-      mapRef.current.easeTo({
-        center: feature.geometry.coordinates,
-        zoom,
-        duration: 500,
+      mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
+        if (err) {
+          return
+        }
+
+        mapRef.current.easeTo({
+          center: feature.geometry.coordinates,
+          zoom,
+          duration: 500,
+        })
       })
-    })
+    }
   }
+
+  // function onLocationDetail(setLoc: Location) {
+  //   setCurrentLocation(setLoc)
+  //   setLatLong([setLoc.latitude, setLoc.longitude])
+  //   router.replace(`/?location=${setLoc.latitude},${setLoc.longitude}`)
+  // }
 
   return (
     <>
@@ -130,7 +138,9 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
         style={{ position: 'absolute', zIndex: 80, top: 0, left: 0, right: 0, bottom: 0 }}
         mapStyle={MAP_STYLE}
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
+        interactiveLayerIds={[clusterLayer.id, unclusteredPointLayer.id]}
         onClick={onMapClick}
+        // onMouseOver={(event) => {}
       >
         <Source
           id="archeomaps"
@@ -145,16 +155,16 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
           <Layer {...unclusteredPointLayer} />
         </Source>
 
-        {/* {points.map((location) => {
+        {/* {points.map((location, index) => {
           return (
             <Marker
-              key={location.id}
+              key={`${index}-${location.id}`}
               longitude={location.longitude}
               latitude={location.latitude}
               style={{ position: 'absolute', left: 0, top: 0, cursor: 'pointer' }}
               onClick={() => onLocationDetail(location)}
             >
-              <div className="h-2 w-2 rounded-lg bg-black" />
+              <div className="h-2 w-2 rounded-lg bg-gray-200 hover:bg-gray-700" />
             </Marker>
           )
         })} */}
