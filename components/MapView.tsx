@@ -8,9 +8,10 @@ import { SetLocationProps } from 'pages'
 
 export const INITIAL_LAT_LONG = [52.455, 5.69306]
 
+const MAP_STYLE = 'mapbox://styles/stevejonk/clo6yz6p200u601qs0wct801b'
+
 export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
   const data = archeomaps as unknown as Archeomaps
-
   const mapRef = useRef<MapRef | null>(null)
 
   const [[latitude, longitude], setLatLong] = useState<number[]>(INITIAL_LAT_LONG)
@@ -35,7 +36,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
           isNaN(loc.geometry.coordinates[0]) ||
           isNaN(loc.geometry.coordinates[1])
         ) {
-          return false
+          return { longitude: null, latitude: null }
         }
 
         return {
@@ -69,7 +70,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
           zoom: 3,
         }}
         style={{ position: 'absolute', zIndex: 80, top: 0, left: 0, right: 0, bottom: 0 }}
-        mapStyle="mapbox://styles/mapbox/dark-v11"
+        mapStyle={MAP_STYLE}
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
       >
         {points.map((location) => {
@@ -83,7 +84,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
               style={{ position: 'absolute', left: 0, top: 0, cursor: 'pointer' }}
               onClick={() => onLocationDetail(location)}
             >
-              <div className="h-2 w-2 rounded-lg bg-blue-200" />
+              <div className="h-2 w-2 rounded-lg bg-black" />
             </Marker>
           )
         })}

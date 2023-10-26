@@ -29,7 +29,7 @@ const MobileNav = () => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="text-gray-900 dark:text-gray-100"
+          className="text-gray-100"
         >
           {navShow ? (
             <path
@@ -47,7 +47,7 @@ const MobileNav = () => {
         </svg>
       </button>
       <div
-        className={`fixed right-0 top-24 z-10 h-full w-full transform bg-white duration-300 ease-in-out dark:bg-gray-900 ${
+        className={`fixed right-0 top-24 z-10 h-full w-full transform bg-gray-900 duration-300 ease-in-out ${
           navShow ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -62,7 +62,7 @@ const MobileNav = () => {
             <div key={link.title} className="px-12 py-4">
               <Link
                 href={link.href}
-                className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
+                className="text-2xl font-bold tracking-widest text-gray-100"
                 onClick={onToggleNav}
               >
                 {link.title}

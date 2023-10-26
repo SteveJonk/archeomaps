@@ -4,7 +4,6 @@ const siteMetadata = {
   headerTitle: 'Stef',
   description: 'Stef is a multi-disciplinary web development studio based in Haarlem',
   language: 'en-us',
-  theme: 'system', // system, dark or light
   siteUrl: 'https://stevejonk.com',
   siteRepo: 'https://github.com/SteveJonk/stef-site',
   siteLogo: '/static/images/logo.png',
