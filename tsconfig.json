@@ -20,7 +20,8 @@
       "@/data/*": ["data/*"],
       "@/layouts/*": ["layouts/*"],
       "@/lib/*": ["lib/*"],
-      "@/css/*": ["css/*"]
+      "@/css/*": ["css/*"],
+      "@/utils/*": ["utils/*"]
     }
   },
   "include": ["declarations.d.ts", "**/*.ts", "**/*.tsx"],
