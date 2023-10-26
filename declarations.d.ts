@@ -8,7 +8,10 @@ declare global {
   // We have to declare how files other than .ts(x) or .js(x) are handled by our codebase because
   // Typescript does not know we are handling these files with Webpack.
   declare module '*.json' {
-    // eslint-disable-next-line
+    const value: any
+    export = value
+  }
+  declare module '*.geojson' {
     const value: any
     export = value
   }
