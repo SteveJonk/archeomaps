@@ -41,14 +41,31 @@ export function MapView() {
     })
   }, [longitude, latitude, locationId])
 
-  const points = useMemo(() => {
-    return data.features.map((location) => ({
-      id: uuidv4(),
-      title: location.properties.name,
-      longitude: location.geometry.coordinates[0],
-      latitude: location.geometry.coordinates[1],
-    }))
-  }, [data])
+  // const points = useMemo(() => {
+  //   return data.features
+  //     .map((location) => {
+  //       if (!location?.geometry?.coordinates?.[0] || !location?.geometry?.coordinates?.[1]) {
+  //         return false
+  //       }
+
+  //       return {
+  //         id: uuidv4(),
+  //         title: location.properties.name,
+  //         longitude: location.geometry.coordinates[0],
+  //         latitude: location.geometry.coordinates[1],
+  //       }
+  //     })
+  //     .filter(Boolean)
+  // }, [data])
+
+  const points = [
+    {
+      id: 'ea90dd3d-c3d3-4965-a728-d2306d2c309a',
+      latitude: 29.7996288,
+      longitude: 31.2089397,
+      title: undefined,
+    },
+  ]
 
   console.log({
     points,
