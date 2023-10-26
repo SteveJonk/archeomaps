@@ -13,22 +13,27 @@ export function DetailView({ description, title }: DetailViewProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="absolute left-[3%] top-[5%] z-[9999] h-[90%] w-[94%] bg-gray-900 bg-opacity-80 p-6 px-4 sm:px-6"
+      className="absolute left-[2%] top-[5%] z-[9999] h-[90%] w-[96%] overflow-y-scroll bg-gray-900 bg-opacity-80 p-6 xl:p-12"
     >
-      <h1 className="mb-8 text-3xl text-white">{title}</h1>
-      {isLoading && <p>Generating content...</p>}
+      <article className="max-w-[40em]">
+        <h1 className="mb-8 text-3xl text-white">{title}</h1>
+        {isLoading && <p>Generating content...</p>}
 
-      {!isLoading &&
-        (gptSummary?.choices?.[0] ? (
-          <>
-            <div className="text-white">
-              {ReactHtmlParser(parseUrl(gptSummary.choices[0].message?.content))}
-            </div>
+        {!isLoading &&
+          (gptSummary?.choices?.[0] ? (
+            <>
+              <div className="text-white">
+                {ReactHtmlParser(parseUrl(gptSummary.choices[0].message?.content))}
+              </div>
+
+              <hr className="my-4 h-[2px] border-0 bg-white" />
+
+              <div className="text-white">{ReactHtmlParser(parseUrl(description))}</div>
+            </>
+          ) : (
             <div className="text-white">{ReactHtmlParser(parseUrl(description))}</div>
-          </>
-        ) : (
-          <div className="text-white">{ReactHtmlParser(parseUrl(description))}</div>
-        ))}
+          ))}
+      </article>
     </motion.div>
   )
 }
