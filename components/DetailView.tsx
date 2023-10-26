@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion'
 import ReactHtmlParser from 'react-html-parser'
-
-import { parseUrl } from '@/utils/parseUrl'
 import { useGetGptSummary } from '@/queries/gpt'
 
-export function DetailView({ description, title, category }: DetailViewProps) {
-  const prompt = `Tell me something about ${title}, add html tags for styling`
-  const { data: gptSummary, isLoading } = useGetGptSummary(title ? prompt : undefined)
+import { parseUrl } from '../utils/parseUrl'
 
-  return (
+export function DetailView({ title, description, category }: DetailViewProps) {
+    const prompt = `Tell me something about ${title}, add html tags for styling`
+    const { data: gptSummary, isLoading } = useGetGptSummary(title ? prompt : undefined)
+
+    return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -35,6 +35,9 @@ export function DetailView({ description, title, category }: DetailViewProps) {
             <div className="text-white">{ReactHtmlParser(parseUrl(description))}</div>
           ))}
       </article>
+      <h1 className="mb-3 text-3xl text-white">{title}</h1>
+      <h3 className="mb-8 text-lg text-white">{category}</h3>
+      <p className="break-words text-white">{ReactHtmlParser(parseUrl(description))}</p>
     </motion.div>
   )
 }
