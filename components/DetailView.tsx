@@ -4,6 +4,7 @@ import ReactHtmlParser from 'react-html-parser'
 import { parseUrl } from '@/utils/parseUrl'
 import { useGetGptSummary } from '@/queries/gpt'
 import { mapCategory } from '@/utils/mapCategory'
+import { Loader } from '@/components/icons/Loader'
 
 export function DetailView({ description, title, category, onClickAway }: DetailViewProps) {
   const prompt = `Tell me something about ${title}, add html tags for styling`
@@ -26,7 +27,11 @@ export function DetailView({ description, title, category, onClickAway }: Detail
           <h1 className="mb-3 break-words text-3xl text-white">{title}</h1>
           <h3 className="mb-8 break-words text-lg text-white">{mapCategory(category).name}</h3>
           <div className="break-words text-white">{ReactHtmlParser(parseUrl(description))}</div>
-          {isLoading && <p className="mt-4">Generating extra info...</p>}
+          {isLoading && (
+            <p className="mt-4">
+              <Loader />
+            </p>
+          )}
 
           {!isLoading && gptSummary?.choices?.[0] && (
             <>
