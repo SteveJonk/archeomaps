@@ -13,7 +13,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col justify-between">
+    <div className="flex max-h-[100svh] flex-col justify-between overflow-hidden">
       <Header {...{ currentLocation, setCurrentLocation }} />
       <section className="relative mb-auto h-[calc(100svh-97px)] overflow-x-clip overflow-y-clip hover:cursor-auto">
         <MapView {...{ currentLocation, setCurrentLocation }} />
