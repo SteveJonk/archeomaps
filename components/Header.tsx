@@ -13,7 +13,7 @@ export function Header({ currentLocation, setCurrentLocation }: HeaderProps) {
   }
 
   return (
-    <header className="white sticky top-0 z-10 mx-auto flex w-full justify-between bg-gray-900 px-4 py-6 sm:px-6">
+    <header className="white top-0 z-10 mx-auto flex w-full justify-between bg-gray-900 px-4 py-6 sm:px-6">
       <div>
         <Link href="/" aria-label={siteMetadata.headerTitle}>
           <div className="flex items-center justify-between">
