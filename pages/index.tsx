@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col justify-between">
       <Header {...{ currentLocation, setCurrentLocation }} />
-      <section className="relative mb-auto h-[calc(100vh-97px)] overflow-x-clip overflow-y-clip hover:cursor-auto">
+      <section className="relative mb-auto h-[calc(100svh-97px)] overflow-x-clip overflow-y-clip hover:cursor-auto">
         <MapView {...{ currentLocation, setCurrentLocation }} />
       </section>
     </div>
