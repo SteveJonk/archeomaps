@@ -6,7 +6,7 @@ import { Select } from './form/Select'
 import { mapStyles } from '@/data/mapStyles'
 import { mapCategory } from '@/utils/mapCategory'
 
-export const Sidebar = ({ config, setConfig, filterOptions }: Props) => {
+export const Sidebar = ({ config, setConfig, filterOptions, resetMapData }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const mapStyleOptions = mapStyles.map((mapStyle) => ({
@@ -31,6 +31,14 @@ export const Sidebar = ({ config, setConfig, filterOptions }: Props) => {
     })
   }
 
+  const handleResetFilters = () => {
+    setConfig({
+      ...config,
+      filters: undefined,
+    })
+    resetMapData()
+  }
+
   return (
     <>
       <aside
@@ -49,6 +57,7 @@ export const Sidebar = ({ config, setConfig, filterOptions }: Props) => {
         <Select
           label="Category"
           optionalLabel="Select a category"
+          value={config.filters?.categories?.[0] ?? ''}
           options={[
             ...filterOptions.categories.map((category) => ({
               value: category,
@@ -58,7 +67,13 @@ export const Sidebar = ({ config, setConfig, filterOptions }: Props) => {
           onChange={handleFilterChange}
         />
         <button
-          className="py-4 text-white opacity-70 transition-opacity hover:opacity-100"
+          className="mb-4 w-full rounded border border-white bg-transparent px-4 py-2 font-semibold text-white transition duration-300 hover:border-transparent hover:bg-white hover:text-gray-900"
+          onClick={() => handleResetFilters()}
+        >
+          Reset Filters
+        </button>
+        <button
+          className="w-full rounded border border-transparent bg-white px-4 py-2 font-semibold text-gray-900 transition duration-300 hover:border-white hover:bg-transparent hover:text-white"
           onClick={() => setIsOpen(false)}
         >
           Close
@@ -67,7 +82,7 @@ export const Sidebar = ({ config, setConfig, filterOptions }: Props) => {
       {isOpen && (
         <div
           role="presentation"
-          className="absolute z-30 h-full w-full bg-gray-900 bg-opacity-40 transition-all duration-300"
+          className="absolute z-30 h-full w-full bg-gray-900 bg-opacity-40 transition-all duration-200"
           onClick={() => setIsOpen(false)}
         ></div>
       )}
@@ -85,4 +100,5 @@ type Props = {
   config: Config
   setConfig: Dispatch<SetStateAction<Config>>
   filterOptions: Filters
+  resetMapData: () => void
 }

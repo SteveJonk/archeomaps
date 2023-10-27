@@ -25,13 +25,13 @@ const ZOOM_FACTOR = 15
 
 export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
   const { config, setConfig, filterOptions } = useConfig()
-  const { mapData } = useMapData()
+  const { mapData, filterMapData, resetMapData } = useMapData()
   const router = useRouter()
 
   const { filters } = config
 
   useEffect(() => {
-    console.log(filters)
+    filters && filterMapData(filters)
   }, [filters])
 
   const [mapRef, setRef] = useInitialMapZoom({
@@ -94,7 +94,12 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
           />
         )}
       </AnimatePresence>
-      <Sidebar config={config} setConfig={setConfig} filterOptions={filterOptions} />
+      <Sidebar
+        config={config}
+        setConfig={setConfig}
+        filterOptions={filterOptions}
+        resetMapData={resetMapData}
+      />
       <Map
         ref={setRef}
         initialViewState={INITIAL_VIEW_STATE}
