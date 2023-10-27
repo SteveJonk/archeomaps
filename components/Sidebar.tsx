@@ -24,7 +24,7 @@ export const Sidebar = ({ config, setConfig }: Props) => {
     <>
       <aside
         className={clsx(
-          'absolute z-40 h-full w-1/3 bg-gray-900 px-6 transition-all duration-300',
+          'absolute z-40 h-full w-full bg-gray-900 px-6 transition-all duration-300 md:w-1/2 lg:w-1/3',
           isOpen ? 'right-0' : '-right-full'
         )}
       >
