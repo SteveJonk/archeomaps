@@ -10,11 +10,12 @@ import { Sidebar } from '@/components/Sidebar'
 import archeomaps from 'data/archeomaps.json'
 
 import { DetailView } from './DetailView'
+import { useConfig } from '@/utils/useConfig'
 
 export const INITIAL_LAT_LONG = [52.455, 5.69306]
-const MAP_STYLE = 'mapbox://styles/stevejonk/clo6yz6p200u601qs0wct801b'
 
 export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
+  const { config, setConfig } = useConfig()
   const data = archeomaps as unknown as GeoJSON.FeatureCollection<GeoJSON.Geometry>
   const router = useRouter()
 
@@ -47,7 +48,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
       if (!clusterId && feature) {
         // Redirect with loaction name in url, next useEffect will show DetailView
         setCurrentLocation({
-          icon: '',
+          icon: feature?.properties?.icon,
           name: feature?.properties?.name,
           description: feature?.properties?.description,
           longitude: feature?.geometry.coordinates[0],
@@ -74,10 +75,11 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
             title={currentLocation.name}
             description={currentLocation.description}
             category={currentLocation.icon}
+            onClickAway={() => setCurrentLocation(null)}
           />
         )}
       </AnimatePresence>
-      <Sidebar />
+      <Sidebar config={config} setConfig={setConfig} />
       <Map
         ref={setRef}
         initialViewState={{
@@ -85,8 +87,8 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
           longitude: INITIAL_LAT_LONG[1],
           zoom: 3,
         }}
-        style={{ position: 'absolute', zIndex: 20, top: 0, left: 0, right: 0, bottom: 0 }}
-        mapStyle={MAP_STYLE}
+        style={{ position: 'absolute', zIndex: 10, top: 0, left: 0, right: 0, bottom: 0 }}
+        mapStyle={config.mapStyle.url}
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
         interactiveLayerIds={[clusterLayer.id, unclusteredPointLayer.id]}
         onClick={onMapClick}
