@@ -7,10 +7,11 @@ import { type SetLocationProps } from 'pages'
 import { formatName } from '@/utils/formatName'
 import { useInitialMapZoom } from '@/utils/useInitialMapZoom'
 import { Sidebar } from '@/components/Sidebar'
-import archeomaps from 'data/archeomaps.json'
 
 import { DetailView } from './DetailView'
 import { useConfig } from '@/utils/useConfig'
+import { useMapData } from '@/utils/useMapData'
+import { useEffect } from 'react'
 
 export const INITIAL_LAT_LONG = [52.455, 5.69306]
 
@@ -23,12 +24,18 @@ const INITIAL_VIEW_STATE = {
 const ZOOM_FACTOR = 15
 
 export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
-  const { config, setConfig } = useConfig()
-  const data = archeomaps as unknown as GeoJSON.FeatureCollection<GeoJSON.Geometry>
+  const { config, setConfig, filterOptions } = useConfig()
+  const { mapData } = useMapData()
   const router = useRouter()
 
+  const { filters } = config
+
+  useEffect(() => {
+    if (filters) console.log(filters)
+  }, [filters])
+
   const [mapRef, setRef] = useInitialMapZoom({
-    data,
+    mapData,
     location: router.query.location as string,
     currentLocation,
     setCurrentLocation,
@@ -87,7 +94,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
           />
         )}
       </AnimatePresence>
-      <Sidebar config={config} setConfig={setConfig} />
+      <Sidebar config={config} setConfig={setConfig} filterOptions={filterOptions} />
       <Map
         ref={setRef}
         initialViewState={INITIAL_VIEW_STATE}
@@ -100,7 +107,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
         <Source
           id="archeomaps"
           type="geojson"
-          data={data}
+          data={mapData}
           cluster={true}
           clusterMaxZoom={14}
           clusterRadius={50}

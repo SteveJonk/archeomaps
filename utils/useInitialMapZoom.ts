@@ -6,7 +6,7 @@ import { type SetLocationProps } from 'pages'
 import { MapRef } from 'react-map-gl'
 
 export function useInitialMapZoom({
-  data,
+  mapData,
   location,
   setCurrentLocation,
 }: UseInitialMapZoomProps): UseInitialMapZoomReturn {
@@ -23,7 +23,7 @@ export function useInitialMapZoom({
         if (router.query.location) {
           const locationName = router.query.location as string
 
-          const urlLocation = data.features.find((feature: GeoJSON.Feature<GeoJSON.Point>) => {
+          const urlLocation = mapData.features.find((feature: GeoJSON.Feature<GeoJSON.Point>) => {
             const findFormattedString = formatName(feature.properties.name)
             return locationName === findFormattedString
           }) as GeoJSON.Feature<GeoJSON.Point> | undefined
@@ -56,7 +56,7 @@ type MapRefType = MapRef | null
 
 type UseInitialMapZoomProps = SetLocationProps & {
   location: string
-  data: GeoJSON.FeatureCollection<GeoJSON.Geometry>
+  mapData: GeoJSON.FeatureCollection<GeoJSON.Geometry>
 }
 
 type UseInitialMapZoomReturn = [React.MutableRefObject<MapRefType>, (node: MapRefType) => void]

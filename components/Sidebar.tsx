@@ -1,11 +1,12 @@
 import { Bars } from './icons/Bars'
 import { useState, Dispatch, SetStateAction, ChangeEvent } from 'react'
 import clsx from 'clsx'
-import { Config } from '@/utils/useConfig'
+import { Config, Filters } from '@/utils/useConfig'
 import { Select } from './form/Select'
 import { mapStyles } from '@/data/mapStyles'
+import { mapCategory } from '@/utils/mapCategory'
 
-export const Sidebar = ({ config, setConfig }: Props) => {
+export const Sidebar = ({ config, setConfig, filterOptions }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const mapStyleOptions = mapStyles.map((mapStyle) => ({
@@ -35,6 +36,13 @@ export const Sidebar = ({ config, setConfig }: Props) => {
           value={config.mapStyle.url}
           onChange={handleMapStyleChange}
         />
+        <Select
+          label="Category"
+          options={filterOptions.categories.map((category) => ({
+            value: category,
+            label: mapCategory(category).name,
+          }))}
+        />
         <button
           className="py-4 text-white opacity-70 transition-opacity hover:opacity-100"
           onClick={() => setIsOpen(false)}
@@ -62,4 +70,5 @@ export const Sidebar = ({ config, setConfig }: Props) => {
 type Props = {
   config: Config
   setConfig: Dispatch<SetStateAction<Config>>
+  filterOptions: Filters
 }

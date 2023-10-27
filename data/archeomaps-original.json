@@ -602,56 +602,6 @@
     {
       "type": "Feature",
       "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [-80.21255, 25.80112, 0],
-          [-65.06103, 32.15701, 0],
-          [-65.91796, 18.39623, 0],
-          [-80.21255, 25.80112, 0]
-        ]
-      },
-      "properties": {
-        "name": "Bermuda Triangle",
-        "styleUrl": "#line-FF0000-4000",
-        "styleHash": "-4b0d1bca",
-        "styleMapHash": {
-          "normal": "#line-FF0000-4000-normal",
-          "highlight": "#line-FF0000-4000-highlight"
-        },
-        "description": "The Bermuda Triangle, sometimes called the Devil's Triangle, is reputedly an area in the western part of the North Atlantic Ocean. The triangle doesn't exist according to the US Navy and the name is not recognized by the US Board on Geographic Names.<br><br>However, a number of aircraft and surface vessels are said to have disappeared in the triangle under unknown circumstances. Popular culture has attributed various disappearances to the paranormal or activity by extraterrestrial beings. Documented evidence indicates that a significant percentage of the incidents were spurious, inaccurately reported, or embellished by later authors. Contrary to popular belief, insurance companies do not charge higher premiums for shipping in this area.<br> <br>http://en.wikipedia.org/wiki/Bermuda_Triangle",
-        "stroke": "#ff0000",
-        "stroke-opacity": 1,
-        "stroke-width": 4
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [138.823242, 34.506557, 0],
-          [142.187119, 27.188075, 0],
-          [133.044434, 28.652031, 0],
-          [138.823242, 34.506557, 0]
-        ]
-      },
-      "properties": {
-        "name": "Dragon's Triangle",
-        "styleUrl": "#line-FF0000-4000",
-        "styleHash": "-4b0d1bca",
-        "styleMapHash": {
-          "normal": "#line-FF0000-4000-normal",
-          "highlight": "#line-FF0000-4000-highlight"
-        },
-        "description": "This area is said to be a danger zone on Japanese maps, according to Charles Berlitz's books The Bermuda Triangle (1974) and The Dragon's Triangle (1989). He states that in the peacetime years between 1952-54 Japan lost 5 military vessels with crews lost totalling over 700 people and that the Japanese government sent a research vessel boarded by over 100 scientists to study the Devil's Sea, and that this ship too vanished; and finally that the area was officially declared a danger zone.<br><br>http://en.wikipedia.org/wiki/Devil's_Sea",
-        "stroke": "#ff0000",
-        "stroke-opacity": 1,
-        "stroke-width": 4
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
         "type": "Point",
         "coordinates": [8.538302, 48.062627, 0]
       },

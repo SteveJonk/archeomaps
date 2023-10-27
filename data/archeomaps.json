@@ -5,24 +5,6 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-64.6875, -71.746432, 0]
-      },
-      "properties": {
-        "name": "Legend",
-        "styleUrl": "#icon-181",
-        "styleHash": "1ab5d86",
-        "styleMapHash": {
-          "normal": "#icon-181-normal",
-          "highlight": "#icon-181-highlight"
-        },
-        "icon": "https://www.gstatic.com/mapspro/images/stock/181-info_circle.png",
-        "description": "To avoid the map to become a giant blur, I decided to use a color coded system for time periods. Though not perfect, (and definitely not permanent as I do plan on making proper icons one day), each color now represents a time period of about 1000-1500 years or another archetype.<br><br>Scroll down and you can see what each color represents.<br><br>RED MARKER: Age period \t2000 bc and older<br>Some of the oldest ruins on earth, including the Pyramids at Giza, Mohendjo-Daro and Stonehenge.<br><br>YELLOW MARKER: Age period \t2000 bc - 500 bc<br>Ancient Greece, Egypt after the Pyramids were constructed and the beginning of middle american civilization.<br><br>CYAN MARKER: Age period\t500 bc - 1000 ad<br>Archaeology during the Roman empires' rise and fall, though plenty was happening world wide.<br><br>BLUE MARKER: Age period\t1000 ad - current<br>Recent sites of interest, such as pyramidal structures, indian temples and replicas of ancient buildings.<br><br>GREEN MARKER: Geoglyph<br>Large drawings in the landscape, such as <br>the Nazca Lines and Uffington White Horse. <br><br>PINK MARKER: Mysterious sites<br>Haunted places, strange sounds in the sea and mysterious dissapearances.<br><br>PURPLE MARKER: Natural sites of interests <br>Beautiful waterfalls, naturally eroded stone formations and other amazing natural phenomena.<br><br>The Marcahuasi Project was started on April 4th, 2012. The color-coded system implemented on May 18, 2012.<br><br>Made by Jaimy Visser.<br><br>If you want to contribute anything, feel free to contact us through Facebook http://fb.com/archeomaps"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [-76.38443, -11.85547, 0]
       },
       "properties": {
@@ -597,56 +579,6 @@
         },
         "icon": "pink-mysterious",
         "description": "The Mapimí Silent Zone (Spanish: La Zona del Silencio) is the popular name for a desert patch near the Bolsón de Mapimí  in Mexico overlapping the Mapimí Biosphere Reserve that is the subject of an urban myth that claims it is an area where radio signals cannot be received.<br><br>In July 1970, an Athena test missile launched from a U.S. military base near Green River, Utah toward White Sands Missile Range lost control and fell in the region. The rocket was carrying two small containers of cobalt 57, a radioactive element. Immediately, a team of specialists arrived to find the fallen rocket. The aerial search lasted three weeks. Finally, when the rocket was found, a road was built to transport the wreckage, along with a small amount of contaminated top soil. As a result of the US Air Force recovery operations there, a number of myths and stories relating to the area arose, including \"strange magnetic anomalies that prevent radio transmission\", mutations of flora and fauna, and extraterrestrial visitations.<br><br> http://en.wikipedia.org/wiki/Mapimi_Silent_Zone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [-80.21255, 25.80112, 0],
-          [-65.06103, 32.15701, 0],
-          [-65.91796, 18.39623, 0],
-          [-80.21255, 25.80112, 0]
-        ]
-      },
-      "properties": {
-        "name": "Bermuda Triangle",
-        "styleUrl": "#line-FF0000-4000",
-        "styleHash": "-4b0d1bca",
-        "styleMapHash": {
-          "normal": "#line-FF0000-4000-normal",
-          "highlight": "#line-FF0000-4000-highlight"
-        },
-        "description": "The Bermuda Triangle, sometimes called the Devil's Triangle, is reputedly an area in the western part of the North Atlantic Ocean. The triangle doesn't exist according to the US Navy and the name is not recognized by the US Board on Geographic Names.<br><br>However, a number of aircraft and surface vessels are said to have disappeared in the triangle under unknown circumstances. Popular culture has attributed various disappearances to the paranormal or activity by extraterrestrial beings. Documented evidence indicates that a significant percentage of the incidents were spurious, inaccurately reported, or embellished by later authors. Contrary to popular belief, insurance companies do not charge higher premiums for shipping in this area.<br> <br>http://en.wikipedia.org/wiki/Bermuda_Triangle",
-        "stroke": "#ff0000",
-        "stroke-opacity": 1,
-        "stroke-width": 4
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [138.823242, 34.506557, 0],
-          [142.187119, 27.188075, 0],
-          [133.044434, 28.652031, 0],
-          [138.823242, 34.506557, 0]
-        ]
-      },
-      "properties": {
-        "name": "Dragon's Triangle",
-        "styleUrl": "#line-FF0000-4000",
-        "styleHash": "-4b0d1bca",
-        "styleMapHash": {
-          "normal": "#line-FF0000-4000-normal",
-          "highlight": "#line-FF0000-4000-highlight"
-        },
-        "description": "This area is said to be a danger zone on Japanese maps, according to Charles Berlitz's books The Bermuda Triangle (1974) and The Dragon's Triangle (1989). He states that in the peacetime years between 1952-54 Japan lost 5 military vessels with crews lost totalling over 700 people and that the Japanese government sent a research vessel boarded by over 100 scientists to study the Devil's Sea, and that this ship too vanished; and finally that the area was officially declared a danger zone.<br><br>http://en.wikipedia.org/wiki/Devil's_Sea",
-        "stroke": "#ff0000",
-        "stroke-opacity": 1,
-        "stroke-width": 4
       }
     },
     {
@@ -11642,7 +11574,7 @@
           "normal": "#icon-124-normal",
           "highlight": "#icon-124-highlight"
         },
-        "icon": "https://www.gstatic.com/mapspro/images/stock/124-red.png",
+        "icon": "red-older-2000bc",
         "description": "Pedra Furada (Portuguese pronunciation: [ˈpɛdɾɐ fuˈɾadɐ] , meaning drilled rock) is an important collection of over 800 archaeological sites and rock paintings in Brazil which suggest a human presence prior to the arrival of Clovis people in North America.<br><br>Pedra Furada includes a collection of rock shelters used for thousands of years by human populations. The first excavations yielded artifacts with Carbon-14 dates of 48,000 to 32,000 years BP. Repeated analysis has confirmed this dating, carrying the range of dates up to 60,000 BP. Archaeological levels that are well excavated yield dates between 32,160 ± 1,000 years BP and 17,000 ± 400 BP. The collection of stone age artifacts includes darts and atlatls but no arrows or bows.<br><br>http://en.wikipedia.org/wiki/Pedra_Furada_sites"
       }
     },
@@ -16987,82 +16919,6 @@
     {
       "type": "Feature",
       "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [-117.268066, -29.439598, 0],
-          [-109.40185, -27.11781, 0],
-          [-108.30871, -27.0738, 0],
-          [-107.47924, -27.0004, 0],
-          [-106.81457, -26.90247, 0],
-          [-106.33667, -26.81426, 0],
-          [-105.41931, -26.59343, 0],
-          [-104.10644, -26.27371, 0],
-          [-101.97509, -25.68113, 0],
-          [-100.17334, -25.08559, 0],
-          [-97.91015, -24.20689, 0],
-          [-92.85644, -22.35007, 0],
-          [-89.34082, -20.92039, 0],
-          [-82.66113, -18.10408, 0],
-          [-78.17871, -16.21467, 0],
-          [-75.23437, -14.94478, 0],
-          [-70.83984, -12.89748, 0],
-          [-37.61718, 5.52851, 0],
-          [-4.04296, 21.28937, 0],
-          [5.75683, 24.80668, 0],
-          [13.05175, 26.58852, 0],
-          [21.5332, 28.61345, 0],
-          [31.15722, 30.10711, 0],
-          [35.4309, 30.31598, 0],
-          [44.86816, 30.93992, 0],
-          [47.19726, 30.9776, 0],
-          [49.43847, 30.90222, 0],
-          [51.19628, 30.69461, 0],
-          [52.38281, 30.44867, 0],
-          [53.61328, 30.10711, 0],
-          [56.57959, 29.42046, 0],
-          [61.08398, 28.49766, 0],
-          [64.51171, 27.95559, 0],
-          [67.28027, 27.48878, 0],
-          [69.43359, 27.05912, 0],
-          [79.95849, 24.84656, 0],
-          [86.15478, 23.18076, 0],
-          [89.49462, 21.73909, 0],
-          [92.8125, 20.13847, 0],
-          [95.18554, 18.75031, 0],
-          [97.00927, 17.58119, 0],
-          [100.12939, 15.89794, 0],
-          [106.36962, 13.26133, 0],
-          [112.5, 10.20681, 0],
-          [127.55127, 2.15281, 0],
-          [152.7539, -11.0059, 0],
-          [161.103516, -16.383391, 0],
-          [169.321289, -20.220966, 0],
-          [-177.714844, -25.324167, 0],
-          [-162.333984, -29.075375, 0],
-          [-150.908203, -30.675715, 0],
-          [-142.470703, -31.353637, 0],
-          [-134.208984, -30.751278, 0],
-          [-126.738281, -30.372875, 0],
-          [-117.246094, -29.458731, 0]
-        ]
-      },
-      "properties": {
-        "name": "Jim Alison Circle Projection",
-        "styleUrl": "#line-0000FF-10000",
-        "styleHash": "-412f8d9c",
-        "styleMapHash": {
-          "normal": "#line-0000FF-10000-normal",
-          "highlight": "#line-0000FF-10000-highlight"
-        },
-        "description": "(it's not as fluid as it should be, but that's because it's easier to make a circle like this on a globe than on a flat map.)<br><br>Near Ollantaytambo, Machu Picchu and Cuzco are within one quarter of a degree. The Oracle at Siwa in the western Egyptian desert is within one quarter of a degree. In the Indus Valley, Mohenjo Daro and Ganweriwala are within one quarter of a degree. The ancient Sumerian city of Ur and Angkor temples in Cambodia and Thailand are within one degree of the great circle. The Angkor temple at Preah Vihear is within one quarter of a degree.<br><br>This circle crosses over the source and the mouth of the Amazon, the dividing line between upper and lower Egypt, the mouth of the Tigris-Euphrates, the Indus River and the Bay of Bengal near the mouth of the Ganges. The circle also crosses over a number of areas of the world that are largely unexplored, including the Sahara Desert, the Brazilian Rainforest, the highlands of New Guinea, and underwater areas of the North Atlantic Ocean, the South Pacific Ocean and the South China Sea.<br><br><br>http://home.hiwaay.net/~jalison/<br><br><br>The Revelation of the Pyramids (2011)<br><br>The Revelation of the Pyramids takes an in depth look into one of the seven wonders of the world, the Great Pyramids of Egypt. Mystery has surrounded these epic structures for centuries with theories varying from the scientific to the bizarre.<br><br>However with over thirty-seven years of in depth research taking in sites from China, Peru, Mexico and Egypt, one scientist has as at last managed first to understand and then to reveal what lies behind this greatest of archaeological mysteries: a message of paramount importance for all mankind, through time and space.<br><br><br>http://vimeo.com/32828241",
-        "stroke": "#0000ff",
-        "stroke-opacity": 1,
-        "stroke-width": 10
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
         "type": "Point",
         "coordinates": [144.331722, -5.783711, 0]
       },
@@ -17272,7 +17128,7 @@
           "normal": "#icon-124-normal",
           "highlight": "#icon-124-highlight"
         },
-        "icon": "https://www.gstatic.com/mapspro/images/stock/124-red.png",
+        "icon": "red-older-2000bc",
         "description": "Makapansgat is an archeological location within the Makapansgat and Zwartkrans Valleys, northeast of Mokopane in Limpopo province, South Africa. It is an important paleontological site, with the local limeworks containing Australopithecus-bearing deposits dating to between 3.0 and 2.6 million years BC.<br><br>This is the oldest of the cave sites in the Makapansgat valley, spanning an age of greater than 4.0 million years until perhaps 1.6 million years ago. This site has yielded many thousands of fossil bones, amongst which were found remains of the gracile australopithecine Australopithecus africanus. The A. africanus fossils are suggested to date to between 2.85 and 2.58 million years ago based on palaeomagnetism by Andy Herries.<br><br><br>http://en.wikipedia.org/wiki/Makapansgat"
       }
     },
@@ -17596,7 +17452,7 @@
           "normal": "#icon-124-normal",
           "highlight": "#icon-124-highlight"
         },
-        "icon": "https://www.gstatic.com/mapspro/images/stock/124-red.png",
+        "icon": "red-older-2000bc",
         "description": "Bluefish Caves is an archaeological site in Yukon, Canada, located 54 km southwest of the Vuntut Gwichin community of Old Crow, from which a specimen of allegedly human-worked mammoth bone has been radiocarbon dated to 28,000 years before present (y.b.p.).<br><br>Recently another team has discovered allegedly human-worked mammoth bone flakes in the Bluefish Caves area, radiocarbon dated to an even earlier period of 40,000 y.b.p.<br><br> <br>Despite a growing acceptance in the scientific community of sites dated somewhat earlier than Clovis, such as Monte Verde in Chile at 14,500 y.b.p, evidence such as that from the Bluefish Caves area or the Topper site in South Carolina indicating much more ancient dates remains controversial and unaccepted by mainstream archaeology.<br><br>http://en.wikipedia.org/wiki/Bluefish_Caves"
       }
     },
@@ -21173,142 +21029,6 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-28.4676522, 38.4865502, 0]
-      },
-      "properties": {
-        "name": "mount?",
-        "styleUrl": "#icon-503-D698AD-nodesc",
-        "styleHash": "6925347d",
-        "styleMapHash": {
-          "normal": "#icon-503-D698AD-nodesc-normal",
-          "highlight": "#icon-503-D698AD-nodesc-highlight"
-        },
-        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-28.4588653, 38.4875285, 0]
-      },
-      "properties": {
-        "name": "mount?",
-        "styleUrl": "#icon-503-D698AD-nodesc",
-        "styleHash": "6925347d",
-        "styleMapHash": {
-          "normal": "#icon-503-D698AD-nodesc-normal",
-          "highlight": "#icon-503-D698AD-nodesc-highlight"
-        },
-        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-28.4494561, 38.4864032, 0]
-      },
-      "properties": {
-        "name": "mount?",
-        "styleUrl": "#icon-503-D698AD-nodesc",
-        "styleHash": "6925347d",
-        "styleMapHash": {
-          "normal": "#icon-503-D698AD-nodesc-normal",
-          "highlight": "#icon-503-D698AD-nodesc-highlight"
-        },
-        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-28.4559685, 38.4779543, 0]
-      },
-      "properties": {
-        "name": "mount?",
-        "styleUrl": "#icon-503-D698AD-nodesc",
-        "styleHash": "6925347d",
-        "styleMapHash": {
-          "normal": "#icon-503-D698AD-nodesc-normal",
-          "highlight": "#icon-503-D698AD-nodesc-highlight"
-        },
-        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-28.4564513, 38.46488, 0]
-      },
-      "properties": {
-        "name": "mount?",
-        "styleUrl": "#icon-503-D698AD-nodesc",
-        "styleHash": "6925347d",
-        "styleMapHash": {
-          "normal": "#icon-503-D698AD-nodesc-normal",
-          "highlight": "#icon-503-D698AD-nodesc-highlight"
-        },
-        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-28.4680653, 38.4632754, 0]
-      },
-      "properties": {
-        "name": "mount?",
-        "styleUrl": "#icon-503-D698AD-nodesc",
-        "styleHash": "6925347d",
-        "styleMapHash": {
-          "normal": "#icon-503-D698AD-nodesc-normal",
-          "highlight": "#icon-503-D698AD-nodesc-highlight"
-        },
-        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-28.4667027, 38.492395, 0]
-      },
-      "properties": {
-        "name": "mount?",
-        "styleUrl": "#icon-503-D698AD-nodesc",
-        "styleHash": "6925347d",
-        "styleMapHash": {
-          "normal": "#icon-503-D698AD-nodesc-normal",
-          "highlight": "#icon-503-D698AD-nodesc-highlight"
-        },
-        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-28.4424555, 38.4725871, 0]
-      },
-      "properties": {
-        "name": "mount?",
-        "styleUrl": "#icon-503-D698AD-nodesc",
-        "styleHash": "6925347d",
-        "styleMapHash": {
-          "normal": "#icon-503-D698AD-nodesc-normal",
-          "highlight": "#icon-503-D698AD-nodesc-highlight"
-        },
-        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [73.2, 33.5, 0]
       },
       "properties": {
@@ -23334,7 +23054,7 @@
           "normal": "#icon-1191-nodesc-normal",
           "highlight": "#icon-1191-nodesc-highlight"
         },
-        "icon": "https://www.gstatic.com/mapspro/images/stock/1191-crisis-wind.png"
+        "icon": "purple-natural"
       }
     },
     {
