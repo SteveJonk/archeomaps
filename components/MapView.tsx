@@ -31,7 +31,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
   const { filters } = config
 
   useEffect(() => {
-    if (filters) console.log(filters)
+    console.log(filters)
   }, [filters])
 
   const [mapRef, setRef] = useInitialMapZoom({

@@ -17,8 +17,6 @@ export const useConfig = () => {
     ),
   ]
 
-  console.log(categoryFilterOptions)
-
   const filterOptions: Filters = {
     categories: categoryFilterOptions,
   }

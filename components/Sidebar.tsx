@@ -21,6 +21,16 @@ export const Sidebar = ({ config, setConfig, filterOptions }: Props) => {
     }
   }
 
+  const handleFilterChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setConfig({
+      ...config,
+      filters: {
+        ...config.filters,
+        categories: e.target.value ? [e.target.value] : undefined,
+      },
+    })
+  }
+
   return (
     <>
       <aside
@@ -38,10 +48,14 @@ export const Sidebar = ({ config, setConfig, filterOptions }: Props) => {
         />
         <Select
           label="Category"
-          options={filterOptions.categories.map((category) => ({
-            value: category,
-            label: mapCategory(category).name,
-          }))}
+          optionalLabel="Select a category"
+          options={[
+            ...filterOptions.categories.map((category) => ({
+              value: category,
+              label: mapCategory(category).name,
+            })),
+          ]}
+          onChange={handleFilterChange}
         />
         <button
           className="py-4 text-white opacity-70 transition-opacity hover:opacity-100"
