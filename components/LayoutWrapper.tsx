@@ -1,5 +1,5 @@
 const LayoutWrapper = ({ children }: Props) => {
-  return <main className="h-screen w-screen">{children}</main>
+  return <main>{children}</main>
 }
 
 interface Props {
