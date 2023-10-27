@@ -7,7 +7,7 @@ import { mapCategory } from '@/utils/mapCategory'
 import { Loader } from '@/components/icons/Loader'
 
 export function DetailView({ description, title, category, onClickAway }: DetailViewProps) {
-  const prompt = `Tell me something about ${title}, add html tags for styling`
+  const prompt = `Tell me something about ${title}`
   const { data: gptSummary, isLoading } = useGetGptSummary(title ? prompt : undefined)
 
   return (

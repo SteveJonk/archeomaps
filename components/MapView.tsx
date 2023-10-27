@@ -14,6 +14,14 @@ import { useConfig } from '@/utils/useConfig'
 
 export const INITIAL_LAT_LONG = [52.455, 5.69306]
 
+const INITIAL_VIEW_STATE = {
+  latitude: INITIAL_LAT_LONG[0],
+  longitude: INITIAL_LAT_LONG[1],
+  zoom: 3,
+}
+
+const ZOOM_FACTOR = 15
+
 export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
   const { config, setConfig } = useConfig()
   const data = archeomaps as unknown as GeoJSON.FeatureCollection<GeoJSON.Geometry>
@@ -57,7 +65,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
 
         mapRef.current.easeTo({
           center: feature.geometry.coordinates as [number, number],
-          zoom: 7,
+          zoom: ZOOM_FACTOR,
           duration: 500,
         })
 
@@ -82,11 +90,7 @@ export function MapView({ currentLocation, setCurrentLocation }: MapViewProps) {
       <Sidebar config={config} setConfig={setConfig} />
       <Map
         ref={setRef}
-        initialViewState={{
-          latitude: INITIAL_LAT_LONG[0],
-          longitude: INITIAL_LAT_LONG[1],
-          zoom: 3,
-        }}
+        initialViewState={INITIAL_VIEW_STATE}
         style={{ position: 'absolute', zIndex: 10, top: 0, left: 0, right: 0, bottom: 0 }}
         mapStyle={config.mapStyle.url}
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}

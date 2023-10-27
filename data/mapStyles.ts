@@ -1,15 +1,19 @@
 export const mapStyles: MapStyle[] = [
   {
+    name: 'Satellite',
+    url: 'mapbox://styles/stevejonk/clo8ev3fk004501pqbuqwaoo9',
+  },
+  {
+    name: 'Globe',
+    url: 'mapbox://styles/stevejonk/clo7izq7200w201qs0nvm6gc8',
+  },
+  {
     name: 'Vintage',
     url: 'mapbox://styles/stevejonk/clo6yz6p200u601qs0wct801b',
   },
   {
     name: 'Vintage Buildings',
     url: 'mapbox://styles/stevejonk/clo7j0wi700v901qv06534mjm',
-  },
-  {
-    name: 'Globe',
-    url: 'mapbox://styles/stevejonk/clo7izq7200w201qs0nvm6gc8',
   },
   {
     name: 'Standard Oil Company',
