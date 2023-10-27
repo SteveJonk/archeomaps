@@ -1,3 +1,3 @@
-# Stef Starter Template
+# ArcheoMaps
 
-This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) starter template.
+A [Next.js](https://nextjs.org/) project with MapBox to show historical sites
