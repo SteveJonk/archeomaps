@@ -25,7 +25,7 @@ export function DetailView({ description, title, category }: DetailViewProps) {
         {!isLoading && gptSummary?.choices?.[0] && (
           <>
             <hr className="my-4 h-[2px] border-0 bg-white" />
-            <div className="important text-white">
+            <div className="important bg-transparent text-white">
               {ReactHtmlParser(parseUrl(gptSummary.choices[0].message?.content))}
             </div>
           </>

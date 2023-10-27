@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 export const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  console.log(isOpen)
+
   return (
     <>
       <aside
