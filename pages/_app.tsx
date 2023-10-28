@@ -9,7 +9,7 @@ import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-import LayoutWrapper from '@/components/LayoutWrapper'
+import LayoutWrapper from '@/components/wrappers/LayoutWrapper'
 
 export default function App({ Component, pageProps, router }: AppProps) {
   const [queryClient] = useState(

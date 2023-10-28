@@ -1,8 +1,9 @@
 const siteMetadata = {
-  title: 'STEF',
+  title: 'Archeomaps',
   author: 'Steve Jonk',
-  headerTitle: 'Stef',
-  description: 'Stef is a multi-disciplinary web development studio based in Haarlem',
+  headerTitle: 'Archeomaps',
+  description:
+    'Archeomaps is a website about maps and archeology, with a lot of information about various historical sites.',
   language: 'en-us',
   siteUrl: 'https://stevejonk.com',
   siteRepo: 'https://github.com/SteveJonk/stef-site',
@@ -24,7 +25,7 @@ const siteMetadata = {
     plausibleDataDomain: '', // e.g. tailwind-nextjs-starter-blog.vercel.app
     simpleAnalytics: false, // true or false
     umamiWebsiteId: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
-    googleAnalyticsId: 'G-REJR623BQS', // e.g. UA-000000-2 or G-XXXXXXX
+    googleAnalyticsId: '', // e.g. UA-000000-2 or G-XXXXXXX
   },
 }
 

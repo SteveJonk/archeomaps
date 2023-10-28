@@ -1,6 +1,5 @@
 const fs = require('fs')
 const globby = require('globby')
-const matter = require('gray-matter')
 const prettier = require('prettier')
 const siteMetadata = require('../data/siteMetadata')
 
@@ -23,16 +22,6 @@ const siteMetadata = require('../data/siteMetadata')
             ${pages
               .map((page) => {
                 // Exclude drafts from the sitemap
-                if (page.search('.md') >= 1 && fs.existsSync(page)) {
-                  const source = fs.readFileSync(page, 'utf8')
-                  const fm = matter(source)
-                  if (fm.data.draft) {
-                    return
-                  }
-                  if (fm.data.canonicalUrl) {
-                    return
-                  }
-                }
                 const path = page
                   .replace('pages/', '/')
                   .replace('data/blog', '/blog')
